@@ -57,6 +57,8 @@ BUILDARGS=""
 DAYS=300
 DBNAME="dbt5"
 EGENHOME=""
+SHAREDIR=""
+FLAT_OUT_DIR_PLACE="/u02"
 PARALLELISM=1
 POSITION=1
 INSTANCE_CUSTOMERS=5000
@@ -117,6 +119,11 @@ while [ "${#}" -gt 0 ] ; do
 		SCALE_FACTOR="${1}"
 		BUILDARGS="${BUILDARGS} -s ${SCALE_FACTOR}"
 		;;
+	(-s)
+		shift
+		FUNCTIONTYPEARG="${1}"
+		BUILDARGS="${BUILDARGS} -f ${FUNCTIONTYPEARG}"
+		;;
 	(-l)
 		shift
 		BUILDARGS="${BUILDARGS} -l ${1}"
@@ -153,6 +160,11 @@ while [ "${#}" -gt 0 ] ; do
 		TOTAL_CUSTOMERS="${1}"
 		BUILDARGS="${BUILDARGS} -t ${TOTAL_CUSTOMERS}"
 		;;
+	(-d)
+		shift
+		DBT5DBNAME="${1}"
+		BUILDARGS="${BUILDARGS} -d ${DBT5DBNAME}"
+		;;
 	(-V | --version)
 		echo "$(basename "${0}") v@PROJECT_VERSION@"
 		exit 0
@@ -161,6 +173,16 @@ while [ "${#}" -gt 0 ] ; do
 		shift
 		DAYS="${1}"
 		BUILDARGS="${BUILDARGS} -w ${DAYS}"
+		;;
+	(-o)
+		shift
+		FLAT_OUT_DIR_PLACE="${1}"
+		BUILDARGS="${BUILDARGS} -o ${FLAT_OUT_DIR_PLACE}"
+		;;
+	(-q)
+		shift
+		SHAREDIR="${1}"
+		BUILDARGS="${BUILDARGS} -q ${SHAREDIR}"
 		;;
 	(-\? | --help)
 		usage

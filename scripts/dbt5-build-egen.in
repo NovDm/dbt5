@@ -111,6 +111,7 @@ cp -pr \
 		${SOURCEDIR}/Customer \
 		${SOURCEDIR}/TestTransactions \
 		${EGENDIR}/src/ || exit 1
+cp -pr ${SOURCEDIR}/include/* ${EGENDIR}/inc/
 mkdir -p \
 		${EGENOBJDIR}/interfaces \
 		${EGENOBJDIR}/MarketExchange \

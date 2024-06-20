@@ -530,6 +530,7 @@ if [ "x${DB_NAME}" = "x" ]; then
 	exit 1
 fi
 
+
 if [ "x${CUSTOMERS_TOTAL}" = "x" ]; then
 	usage "specify the number of total customers -t #"
 	exit 1
